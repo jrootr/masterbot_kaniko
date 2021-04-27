@@ -3,7 +3,7 @@ FROM python:3.8-slim-buster
 # WORKDIR /usr/src/app
 
 # Updating apt to see and install Google Chrome
-RUN apt-get -y update
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
 
 RUN apt-get install -y --no-install-recommends wget
 
@@ -12,8 +12,6 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
 
 # Adding Google Chrome to the repositories
 RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-
-
 
 # Install ca-certificates and netbase
 # RUN apt-get install -y --no-install-recommends ca-certificates netbase && rm -rf /var/lib/apt/lists/*
