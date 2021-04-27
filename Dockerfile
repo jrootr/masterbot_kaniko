@@ -3,9 +3,7 @@ FROM python:3.8-slim-buster
 # WORKDIR /usr/src/app
 
 # Updating apt to see and install Google Chrome
-RUN apt-get update && apt-get install -y --no-install-recommends apt-utils && apt-get install -y gnupg2
-
-RUN apt-get install -y --no-install-recommends wget 
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils gnupg2 wget curl
 
 # Adding trusting keys to apt for repositories
 ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=DontWarn
@@ -19,7 +17,7 @@ RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable 
 
 # Magic happens
 # Run update again after adding the extended repo above
-RUN apt-get update
+RUN apt-get update -y
 RUN apt-get install -y google-chrome-stable dumb-init
 
 # Installing Unzip
