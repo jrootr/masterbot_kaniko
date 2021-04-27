@@ -18,6 +18,8 @@ RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable 
 # RUN apt-get install -y --no-install-recommends ca-certificates netbase && rm -rf /var/lib/apt/lists/*
 
 # Magic happens
+# Run update again after adding the extended repo above
+RUN apt-get update
 RUN apt-get install -y google-chrome-stable dumb-init
 
 # Installing Unzip
