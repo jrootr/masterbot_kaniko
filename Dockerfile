@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends apt-utils && ap
 RUN apt-get install -y --no-install-recommends wget 
 
 # Adding trusting keys to apt for repositories
+ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=DontWarn
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 
 # Adding Google Chrome to the repositories
@@ -34,6 +35,7 @@ RUN chmod +x /usr/local/bin/chromedriver
 ENV DISPLAY=:99
 ENV PATH /usr/local/bin:$PATH
 ENV LANG C.UTF-8
+
 # ENV PYTHON_VERSION 3.8.5
 
 # # Make data folder
