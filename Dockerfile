@@ -3,9 +3,9 @@ FROM python:3.8-slim-buster
 # WORKDIR /usr/src/app
 
 # Updating apt to see and install Google Chrome
-RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils && apt-get install -y gnupg2
 
-RUN apt-get install -y --no-install-recommends wget
+RUN apt-get install -y --no-install-recommends wget 
 
 # Adding trusting keys to apt for repositories
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
